@@ -1,0 +1,75 @@
+#!/bin/bash
+# addref
+
+#
+# Check to see that $BASHREF is set
+#
+if [ -z $BASHREF ]; then
+	echo `basename $0`": error: \$BASHREF not set. It must point to bashref file."
+	exit 1
+fi
+
+#
+# Check to see that $FILENAME exists
+#
+FILENAME=$BASHREF
+BACKUP=${BASHREF}.bak
+if [ ! -e $FILENAME ]; then
+	echo `basename $0`": error: Cannot find $FILENAME"
+	exit 1
+fi
+
+#
+# Print usage message if no keyword entered
+#
+if [[ $# -eq 0 || $1 = "-h" || $1 = "--help" ]]; then
+	echo Usage: `basename $0` [KEYWORD]
+	echo
+	echo Add Reference. 
+    echo Adds an entry to the file at \$BASHREF under the heading KEYWORD.
+	echo If KEYWORD doesn\'t exist a new heading is created at end of file.
+	exit
+fi
+
+#
+# Check if KEYWORD exists in file.
+# grep returns 0 if found, 1 if not found, 
+# and 2 for other error, e.g. file doesn't exist
+#
+KEYWORD=$1
+HEADING="## $KEYWORD"
+NOTFOUND=
+grep -q "^$HEADING" "$FILENAME"
+if [ $? -eq 1 ]; then
+	NOTFOUND=TRUE
+elif [ $? -eq 2 ]; then
+	echo `basename $0`": error: grep returned unknown error"
+	exit 2
+fi	
+
+#
+# Get new entry from user
+#
+NEW_ENTRY="$TMP/new.entry"
+echo "$HEADING"
+echo "(^D to end, ^C to cancel):"
+cat > $NEW_ENTRY
+
+#
+# Create backup copy of $FILENAME
+#
+cp "$FILENAME" "$BACKUP"
+
+#
+# If keyword is not found then add new section at end
+#
+if [ $NOTFOUND ]; then
+echo "$HEADING" >> "$FILENAME"
+	echo >> "$FILENAME"
+fi	
+
+#
+# Add the new entry immediately after HEADING
+#
+sed -i "/^${HEADING}/r $NEW_ENTRY" "$FILENAME"
+

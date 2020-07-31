@@ -61,13 +61,6 @@ echo -e "\033c"
 option -n
 		suppress trailing newline
 
-## bash
-set [args1...] -- [args2...]
-		any args after -- are interpreted literally, even if they 
-		begin with -. prevents any of args2 to be taken as an option
-export -n variable
-		causes the variable to be removed from export list
-
 ## grep
 -i	ignore case
 -n	print line number of matching lines
@@ -206,11 +199,22 @@ git remote -v
 git add (FILE(s)|.)
 git commit -m "MESSAGE"
 git push (<remote>|origin) master
+
 ## set
 unset
 	-unset environment variable
+set [args1...] -- [args2...]
+		any args after -- are interpreted literally, even if they 
+		begin with -. prevents any of args2 to be taken as an option
 
 ## zcat
 zcat
 	-like cat for zipped files
+
+## export
+export -n variable
+		causes the variable to be removed from export list
+
+## if
+use [[ for compound conditionals
 

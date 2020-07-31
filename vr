@@ -1,40 +1,64 @@
 #!/bin/bash
 #
-# display bash reference file
-# ~/bin/vr
+# vr
+# View Reference. Display bash reference file at $BASHREF
 
-FILE=~/docs/bashref
+#
+# Check to see that $BASHREF is set
+#
+if [ -z $BASHREF ]; then
+	echo `basename $0`": error: \$BASHREF not set. It must point to bashref file."
+	exit 1
+fi
 
-# 1 parameter
-if [ $# -eq 1 ]; then
-
-    # check refnotes.bak
-	if   [ $1 = "-b" ]; then 
-        echo point 2
-		FILE="$FILE.bak"
-		shift
-
-    # make backup of refnotes
-    elif [ $1 = "-m" ]; then
-        echo point 3
-		cp "$FILE" "$FILE.bak"
-		exit
-	fi	
-fi	
-
+#
+# No arguments, display headings only
+#
 if [ $# -eq 0 ]; then
-    # display headings only
     grep '^#' $FILE
     exit
 fi
 
-grep -q "^## $1" $FILE
-# if $1 exists in refnotes, grep returns 0, else 1
+FILE=$BASHREF
 
+# 1 arguments
+if [ $# -eq 1 ]; then
+
+    # Display usage
+    if [[ $1 = "-h" || $1 = "--help" ]]; then 
+        echo "Usage: `basename $0`"
+        echo "       `basename $0` [ -b ] KEYWORD"
+        echo "       `basename $0` -m"
+        echo "       `basename $0` -h | --help"
+        echo 
+        echo The first form lists all the keywords in \$BASHREF
+        echo The second displays the reference for KEYWORD. If -b, check \$BASHREF.bak
+        echo The third makes a back up of \$BASHREF
+        echo The fourth prints this usage message
+        exit
+
+    # Make backup of bashref
+    elif [[ $1 = "-m" ]]; then
+        echo Making backup of \$BASHREF
+		cp "$FILE" "$FILE.bak"
+		exit
+	fi	
+
+# 2 arguments, check backup
+elif [[ $# -eq 2 && $1 = "-b" ]]; then 
+    echo Checking \$BASHREF.bak
+    FILE="$FILE.bak"
+    shift
+fi
+
+KEYWORD=$1
+grep -q "^## $KEYWORD" $FILE
+
+# if KEYWORD exists in BASHREF, grep returns 0, else 1
 if [ $? -eq 0 ]; then
-    sed -n "/^## $1/,/^$/p" "$FILE"
-    echo
+    # print all lines between HEADING and the next empty line
+    sed -n "/^## $KEYWORD/,/^$/p" "$FILE"
 else 
-    echo "vr: $1: entry not found"
+    echo "vr: $KEYWORD: entry not found"
 fi
 

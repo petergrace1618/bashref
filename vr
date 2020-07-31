@@ -1,0 +1,40 @@
+#!/bin/bash
+#
+# display bash reference file
+# ~/bin/vr
+
+FILE=~/docs/bashref
+
+# 1 parameter
+if [ $# -eq 1 ]; then
+
+    # check refnotes.bak
+	if   [ $1 = "-b" ]; then 
+        echo point 2
+		FILE="$FILE.bak"
+		shift
+
+    # make backup of refnotes
+    elif [ $1 = "-m" ]; then
+        echo point 3
+		cp "$FILE" "$FILE.bak"
+		exit
+	fi	
+fi	
+
+if [ $# -eq 0 ]; then
+    # display headings only
+    grep '^#' $FILE
+    exit
+fi
+
+grep -q "^## $1" $FILE
+# if $1 exists in refnotes, grep returns 0, else 1
+
+if [ $? -eq 0 ]; then
+    sed -n "/^## $1/,/^$/p" "$FILE"
+    echo
+else 
+    echo "vr: $1: entry not found"
+fi
+

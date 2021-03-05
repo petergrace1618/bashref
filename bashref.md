@@ -67,7 +67,7 @@ Convert multiple occurrences of characters in \<charlist\> to single occurrences
 
     tr -s '<charlist>'
 
-delete all occurences of \<char\> from input
+Delete all occurences of \<char\> from input
 
     tr -d '<char>'
 
@@ -97,7 +97,7 @@ delete all occurences of \<char\> from input
 | -L | dereference symbolic links. Shows info about file it points to, not about link itself |
 
 ## stat.h
-`sys/stat.h` - located in /usr/include/sys
+`sys/stat.h` located in /usr/include/sys
 
 ## ln
     ln -s TARGET LINKNAME
@@ -140,7 +140,7 @@ delete all occurences of \<char\> from input
 | -r,-R | remove directories and their contents recursively |
 
 ## find
-Add `.bak` to files
+Add `.bak` extension to files
 
     find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
 
@@ -148,9 +148,8 @@ List directories only
 
     find . -maxdepth 1 -type d
 
-CONVERT: 1971-Budgie/1971-Budgie.jpg 
-
-INTO: 1971-Budgie/Folder.jpg
+Convert filename of the form `<NAME>/<NAME>.jpg` to `<NAME>/Folder.jpg` <br>
+For example, `1971-Budgie/1971-Budgie.jpg` -> `1971-Budgie/Folder.jpg`
 
     find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
 

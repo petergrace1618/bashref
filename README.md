@@ -1,3 +1,3 @@
-# bashref (Bash reference)
+# bashref 
 
-A [quick reference](bashref) to various Bash shell commands.
+A [quick Bash reference](bashref) to various Bash shell commands.

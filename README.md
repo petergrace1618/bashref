@@ -1,15 +1,15 @@
 # bashref 
 
-A [quick reference](bashref) for various Bash shell commands.
+A [quick reference](bashref.md) for various Bash shell commands.
 
-## ar (Add reference)
+## [ar](ar) (Add reference)
 A Bash script to add a reference to `bashref`. 
 
 Usage: `ar KEYWORD`. 
 
 If KEYWORD exists, adds a reference under the heading for KEYWORD. If KEYWORD does not exist, creates a new heading for KEYWORD and reference at end of `bashref`.
 
-## vr (View reference)
+## [vr](vr) (View reference)
 A Bash script to view an existing reference in `bashref`. 
 
 Usage: `vr [KEYWORD]`. 

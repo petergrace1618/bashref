@@ -158,50 +158,77 @@ TARGET: PREREQUISITES
 	RECIPE
 
 ## git
---author=<pattern>
-    Show only commits from author matching pattern
-git branch -f <branch> <starting-point>
-	- Reset <branch> to <starting-point>
-git merge --abort
-	- abort the merge after conflicts
-git merge --continue
-	- continue merge after conflicts
-	-create new branch and then switch to it
-git checkout -b <new-branch>
-	-list the last N commits
-git log -N
-	-remove files from index but not working tree (directory)
-git rm --cached <files>
-	-show commit history
-git log
-    - to show files in master branch
-git ls-tree --name-only master
-    - to merge gh-pages into master
-git checkout master
-git merge gh-pages
-    - to optionally delete gh-pages
-git branch -D gh-pages
-    - to add new repository to github
-    (first create new repo on github)
-mkdir PROJECTDIR
-cp PROJECTFILES PROJECTDIR
-cd PROJECTDIR
-git init
-git add .
-git commit -m ...
-git remote add {REPONAME|NICKNAME} https://gitgub.com/USERNAME/REPONAME
-git push {REPONAME|NICKNAME} master
-    - to create a github pages branch
-    (first rename main page to index.html)
-git branch gh-pages
-git checkout gh-pages
-git push REMOTE gh-pages
-    - to show names/URLs of all remotes stored in project
-git remote -v
-    - to update, commit, and push a project
-git add (FILE(s)|.)
-git commit -m "MESSAGE"
-git push (<remote>|origin) master
+Show only commits from author matching pattern
+
+    git log --author=<pattern>
+
+Reset <branch> to <starting-point>
+    
+    git branch -f <branch> <starting-point>
+
+abort the merge after conflicts
+
+    git merge --abort
+
+continue merge after conflicts
+
+    git merge --continue
+    
+create new branch and then switch to it
+
+    git checkout -b <new-branch>
+    
+list the last N commits
+
+    git log -N
+    
+remove files from index but not working tree (directory)
+
+    git rm --cached <files>
+
+show commit history
+
+    git log
+
+to show files in master branch
+
+    git ls-tree --name-only master
+
+to merge gh-pages into master
+
+    git checkout master
+    git merge gh-pages
+
+to optionally delete gh-pages
+
+    git branch -D gh-pages
+
+to add new repository to github (first create new repo on github)
+
+    mkdir PROJECTDIR
+    cp PROJECTFILES PROJECTDIR
+    cd PROJECTDIR
+    git init
+    git add .
+    git commit -m ...
+    git remote add {REPONAME|NICKNAME} https://gitgub.com/USERNAME/REPONAME
+    git push {REPONAME|NICKNAME} master
+
+to create a github pages branch (first rename main page to index.html)
+
+    git branch gh-pages
+    git checkout gh-pages
+    git push REMOTE gh-pages
+
+to show names/URLs of all remotes stored in project
+
+    git remote -v
+
+to update, commit, and push a project
+
+    git add (FILE(s)|.)
+    git commit -m "MESSAGE"
+    git push (<remote>|origin) master
 
 ## set
 unset

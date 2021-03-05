@@ -10,7 +10,7 @@ Usage: `ar KEYWORD`.
 If KEYWORD exists, adds a reference under the heading for KEYWORD. If KEYWORD does not exist, creates a new heading for KEYWORD and reference at end of `bashref`.
 
 ## vr (View reference)
-A Bash script to view an existing reference. 
+A Bash script to view an existing reference in `bashref`. 
 
 Usage: `vr [KEYWORD]`. 
 

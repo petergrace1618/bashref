@@ -62,6 +62,7 @@ option -n
 		suppress trailing newline
 
 ## grep
+-e  match regexp
 -i	ignore case
 -n	print line number of matching lines
 -v 	invert pattern, i.e. show non-matching lines
@@ -157,7 +158,9 @@ TARGET: PREREQUISITES
 	RECIPE
 
 ## git
-git -f <branch> <starting-point>
+--author=<pattern>
+    Show only commits from author matching pattern
+git branch -f <branch> <starting-point>
 	- Reset <branch> to <starting-point>
 git merge --abort
 	- abort the merge after conflicts

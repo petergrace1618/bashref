@@ -11,6 +11,8 @@ if [ -z $BASHREF ]; then
 	exit 1
 fi
 
+FILE=$BASHREF
+
 #
 # No arguments, display headings only
 #
@@ -18,8 +20,6 @@ if [ $# -eq 0 ]; then
     grep '^#' $FILE
     exit
 fi
-
-FILE=$BASHREF
 
 # 1 arguments
 if [ $# -eq 1 ]; then

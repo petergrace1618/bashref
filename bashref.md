@@ -63,11 +63,13 @@
 | :d | remove current file from list of files |
 
 ## tr
+Convert multiple occurrences of characters in \<charlist\> to single occurrences
+
     tr -s '<charlist>'
-> convert multiple occurrences of characters in \<charlist\> to single occurrences
+
+delete all occurences of \<char\> from input
 
     tr -d '<char>'
-> delete all occurences of \<char\> from input
 
 ## cat
 | Option | Use |
@@ -138,14 +140,18 @@
 | -r,-R | remove directories and their contents recursively |
 
 ## find
-> Add `.bak` to files
+Add `.bak` to files
+
     find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
 
-> list directories only
+List directories only
+
     find . -maxdepth 1 -type d
 
-> CONVERT: 1971-Budgie/1971-Budgie.jpg 
-> INTO: 1971-Budgie/Folder.jpg
+CONVERT: 1971-Budgie/1971-Budgie.jpg 
+
+INTO: 1971-Budgie/Folder.jpg
+
     find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
 
 ## make
@@ -228,12 +234,14 @@ to update, commit, and push a project
     git push (<remote>|origin) master
 
 ## set
+unset environment variable
+
     unset
-> unset environment variable
+
+Any args after `--` are interpreted literally, even if they 
+begin with `-`. Prevents any of args2 to be taken as an option.
 
     set [args1...] -- [args2...]
-> Any args after `--` are interpreted literally, even if they 
-> begin with `-`. Prevents any of args2 to be taken as an option.
 
 ## zcat
 Like cat but for zipped files

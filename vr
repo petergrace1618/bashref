@@ -21,44 +21,24 @@ if [ $# -eq 0 ]; then
     exit
 fi
 
-# 1 arguments
-if [ $# -eq 1 ]; then
-
-    # Display usage
-    if [[ $1 = "-h" || $1 = "--help" ]]; then 
-        echo "Usage: `basename $0`"
-        echo "       `basename $0` [ -b ] KEYWORD"
-        echo "       `basename $0` -m"
-        echo "       `basename $0` -h | --help"
-        echo 
-        echo The first form lists all the keywords in \$BASHREF
-        echo The second displays the reference for KEYWORD. If -b, check \$BASHREF.bak
-        echo The third makes a back up of \$BASHREF
-        echo The fourth prints this usage message
-        exit
-
-    # Make backup of bashref
-    elif [[ $1 = "-m" ]]; then
-        echo Making backup of \$BASHREF
-		cp "$FILE" "$FILE.bak"
-		exit
-	fi	
-
-# 2 arguments, check backup
-elif [[ $# -eq 2 && $1 = "-b" ]]; then 
-    echo Checking \$BASHREF.bak
-    FILE="$FILE.bak"
-    shift
+# Display usage
+if [[ $# -gt 1 || $1 = "-h" || $1 = "--help" ]]; then 
+    echo "Usage: `basename $0` [KEYWORD | [-h | --help]]"
+    echo
+    echo Without KEYWORD, lists all the keywords in \$BASHREF.
+    echo With KEYWORD, lists entry for KEYWORD.
+    echo Or prints this usage message.
+    exit
 fi
 
 KEYWORD=$1
-grep -q "^## $KEYWORD" $FILE
+grep -q "^## $KEYWORD$" $FILE
 
 # if KEYWORD exists in BASHREF, grep returns 0, else 1
 if [ $? -eq 0 ]; then
     # print all lines between HEADING and the next empty line
     sed -n "/^## $KEYWORD/,/^$/p" "$FILE"
 else 
-    echo "vr: $KEYWORD: entry not found"
+    echo "`basename $0`: $KEYWORD: entry not found"
 fi
 

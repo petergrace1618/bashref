@@ -13,7 +13,7 @@ fi
 # Check to see that $FILENAME exists
 #
 FILENAME=$BASHREF
-BACKUP=${BASHREF}.bak
+#BACKUP=${BASHREF}.bak
 if [ ! -e $FILENAME ]; then
 	echo `basename $0`": error: Cannot find $FILENAME"
 	exit 1
@@ -57,8 +57,8 @@ cat > $NEW_ENTRY
 
 #
 # Create backup copy of $FILENAME
-#
-cp "$FILENAME" "$BACKUP"
+# Project is on github, so backup no longer needed
+#cp "$FILENAME" "$BACKUP"
 
 #
 # If keyword is not found then add new section at end

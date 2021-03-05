@@ -4,26 +4,25 @@
 | Command | Use |
 | - | - |
 | `dG, yG, cG` | delete, yank, and change to end of file |
-
-`dgg, ygg, cgg` delete, yank, and change to beginning of file
-`:argd file` delete file from argument list
-`:arge[dit] file` add file to the argument list and edits it
-`:args file1 file2 ...` load the given list of files for editing
-`:e!` reload the original file
-`:options` open window showing all vim options
-`:hid[e]` close the current window
-`^W^W` switch to next window
-`/<up-arrow> :<up-arrow>` allows you to recall previous searches and commands
-`*` search for (and highlights) the word under the cursor
-`:%s///c` substitute on all lines (%) with confirmation (c)
-`:w` Save current file.
-`:w <file>` Save a copy of current file with name <file>. (Doesn't change name of current file)
-`:saveas <file>` Save current file as <file>
-`:edit <file>` Open new file to edit
-`:next` Go to next in list of files (entered on command line)
-`:prev` Go to previous ...
-`<Ctrl-6>` Switch between current/prev file
-`D` Delete from cursor to end of line
+| `dgg, ygg, cgg` | delete, yank, and change to beginning of file |
+| `:argd file` | delete file from argument list |
+| `:arge[dit] file` | add file to the argument list and edits it |
+| `:args file1 file2 ...` | load the given list of files for editing |
+| `:e!` | reload the original file |
+| `:options` | open window showing all vim options |
+| `:hid[e]` | close the current window |
+| `^W^W` | switch to next window |
+| `/<up-arrow> :<up-arrow>` | allows you to recall previous searches and commands |
+| `*` | search for (and highlights) the word under the cursor |
+| `:%s///c` | substitute on all lines (%) with confirmation (c) |
+| `:w` | Save current file. |
+| `:w <file>` | Save a copy of current file with name <file>. (Doesn't change name of current file) |
+| `:saveas <file>` | Save current file as <file> |
+| `:edit <file>` | Open new file to edit |
+| `:next` | Go to next in list of files (entered on command line) |
+| `:prev` | Go to previous ... |
+| `<Ctrl-6>` | Switch between current/prev file |
+| `D` | Delete from cursor to end of line |
 
 ## info
 | Key | Use |

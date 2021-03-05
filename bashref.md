@@ -2,7 +2,7 @@
 
 ## vi
 | Command | Use |
-| :- | :- |
+| - | - |
 | `dG, yG, cG` | delete, yank, and change to end of file |
 
 `dgg, ygg, cgg` delete, yank, and change to beginning of file
@@ -27,7 +27,7 @@
 
 ## info
 | Key | Use |
-| --- | :--- |
+| --- | --- |
 | t   | go to top node (menu page) |
 | b   | beginning of node (top of page) |
 | n   | Go to next node |
@@ -39,113 +39,127 @@
 
 ## echo
 | Option | Use |
-| - | :- |
+| - | - |
 | -e | enable interpretation of backslash escape characters |
 | -e "\033c" | clears the screen |
 | -n | suppress trailing newline |
 
 ## grep
--e  match regexp
--i	ignore case
--n	print line number of matching lines
--v 	invert pattern, i.e. show non-matching lines
--c	print count of matching lines
--q		quiet mode. supresses normal output
+| Option | Use |
+| - | - |
+| -e | match regexp |
+| -i | ignore case |
+| -n | print line number of matching lines |
+| -v | invert pattern, i.e. show non-matching lines |
+| -c | print count of matching lines |
+| -q | quiet mode. supresses normal output |
 
 ## less
--,--	set command line options from inside less
-:e, E
-	open new file for examining
-:n, :p, :x
-	view next, previous, first file in list
-:d
-	remove current file from list of files
+| Key command | Use |
+| - | - |
+| -,-- | set command line options from inside less |
+| :e, E | open new file for examining |
+| :n, :p, :x | view next, previous, first file in list |
+| :d | remove current file from list of files |
 
 ## tr
-tr -s '<charlist>' 
-	convert multiple occurrences of characters in <charlist> 
-	to single occurrences
-tr -d '<char>'
-	delete all occurences of <char> from input
+    tr -s '<charlist>'
+> convert multiple occurrences of characters in \<charlist\> to single occurrences
+
+    tr -d '<char>'
+> delete all occurences of \<char\> from input
 
 ## cat
--e: 	shows control chars (e.g. ^M) and $ at EOL. 
-		shows if a text file is DOS or UNIX format.
--A		like -e but shows tabs as ^I
+| Option | Use |
+| - | - |
+| -e | shows control chars (e.g. ^M) and $ at EOL |
+| -A | like -e but shows tabs as ^I |
 
 ## diff
--s	report when files are the same
--y	two column output
--q:	quiet mode. display only if files differ
+| Option | Use |
+| - | - |
+| -s | report when files are the same |
+| -y | two column output |
+| -q | quiet mode. display only if files differ |
 
 ## ls
--1
-	-single column output
--p
-	-adds only / after directories
---indicator-style=none
-	-no indicator after filename
--d	list directory entries instead of contents, likewise with symbolic links
--p	add terminal backslash to directory listings
--Q	enclose entries in double quotes
--H	When a symbolic link points to a directory, follow the link
--L  dereference symbolic links. Shows info about file it points
-    to, and not about link itself
+| Option | Use |
+| - | - |
+| -1 | -single column output |
+| -p | -adds only / after directories |
+| --indicator-style=none | -no indicator after filename |
+| -d | list directory entries instead of contents, likewise with symbolic links |
+| -p | add terminal backslash to directory listings |
+| -Q | enclose entries in double quotes |
+| -H | When a symbolic link points to a directory, follow the link |
+| -L | dereference symbolic links. Shows info about file it points to, not about link itself |
 
 ## stat.h
-sys/stat.h - located in /usr/include/sys
+`sys/stat.h` - located in /usr/include/sys
 
 ## ln
-ln -s TARGET LINKNAME
+    ln -s TARGET LINKNAME
 
 ## sed
--s	consider files separate instead of one continuous stream
--i	modify files in place
-sed -f FILE
-	specifies a script file
-sed -n
-	suppress automatic printing of pattern space
+| Option | Use |
+| - | - |
+| -s | consider files separate instead of one continuous stream |
+| -i | modify files in place |
+| -f FILE | specifies a script file |
+| -n | suppress automatic printing of pattern space |
 
 ## uniq
--d	only print duplicate lines
+| Option | Use |
+| - | - |
+| -d | only print duplicate lines |
 
 ## cp
--s	create symbolic link instead of copying file
+| Option | Use |
+| - | - |
+| -s | create symbolic link instead of copying file |
 
 ## wc
--L:	print length of longest line
+| Option | Use |
+| - | - |
+| -L | print length of longest line |
 
 ## sort
--o FILE
-	send output to file instead of stdout
--d 	sort in dictionary order. only consider alphanumerics and blanks
--r	reverse order sort
--c	check for sorted input. do not sort
--u	like uniq. collapse repeated lines
+| Option | Use |
+| - | - |
+|-o FILE | send output to file instead of stdout |
+| -d | sort in dictionary order. only consider alphanumerics and blanks |
+| -r | reverse order sort |
+| -c | check for sorted input. do not sort |
+| -u | like uniq. collapse repeated lines |
 
 ## rm
--r,-R 	remove directories and their contents recursively
+| Option | Use |
+| - | - |
+| -r,-R | remove directories and their contents recursively |
 
 ## find
-find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
-find . -maxdepth 1 -type d
-    list directories only
-find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
-CONVERTS:
-1971-Budgie/1971-Budgie.jpg
-INTO: 
-1971-Budgie/Folder.jpg
+> Add `.bak` to files
+    find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
+
+> list directories only
+    find . -maxdepth 1 -type d
+
+> CONVERT: 1971-Budgie/1971-Budgie.jpg 
+> INTO: 1971-Budgie/Folder.jpg
+    find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
 
 ## make
+```
 TARGET: PREREQUISITES
 	RECIPE
+```
 
 ## git
 Show only commits from author matching pattern
 
     git log --author=<pattern>
 
-Reset <branch> to <starting-point>
+Reset \<branch\> to \<starting-point\>
     
     git branch -f <branch> <starting-point>
 
@@ -214,20 +228,21 @@ to update, commit, and push a project
     git push (<remote>|origin) master
 
 ## set
-unset
-	-unset environment variable
-set [args1...] -- [args2...]
-		any args after -- are interpreted literally, even if they 
-		begin with -. prevents any of args2 to be taken as an option
+    unset
+> unset environment variable
+
+    set [args1...] -- [args2...]
+> Any args after `--` are interpreted literally, even if they 
+> begin with `-`. Prevents any of args2 to be taken as an option.
 
 ## zcat
-zcat
-	-like cat for zipped files
+Like cat but for zipped files
 
 ## export
-export -n variable
-		causes the variable to be removed from export list
+| Option | Use |
+| - | - |
+| -n variable | remove variable from export list |
 
 ## if
-use [[ for compound conditionals
+use `[[` for compound conditionals
 

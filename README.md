@@ -2,10 +2,10 @@
 
 A [quick reference](bashref.md) for various Bash shell commands.
 
-## [ar](ar) (Add reference)
+## [addref](addref) (Add reference)
 A Bash script to add a reference to `bashref`. 
 
-Usage: `ar KEYWORD`. 
+Usage: `addref KEYWORD`. 
 
 If KEYWORD exists, adds a reference under the heading for KEYWORD. If KEYWORD does not exist, creates a new heading for KEYWORD and reference at end of `bashref`.
 

@@ -95,6 +95,10 @@ Delete all occurences of \<char\> from input
 | -H | When a symbolic link points to a directory, follow the link |
 | -L | dereference symbolic links. Shows info about file it points to, not about link itself |
 
+List hidden files and directories. Doesn't match `.`, `..`, or `..*`
+
+    ls .[^.]* -d
+
 ## stat.h
 `sys/stat.h` located in /usr/include/sys
 
@@ -139,6 +143,10 @@ Delete all occurences of \<char\> from input
 | -r,-R | remove directories and their contents recursively |
 
 ## find
+List directories other than hidden directories
+
+    find . -maxdepth 1 -type d -name '[^.]*' -printf '%f\n'
+
 Add `.bak` extension to files
 
     find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
@@ -150,7 +158,8 @@ List directories only
 Convert filename of the form `<NAME>/<NAME>.jpg` to `<NAME>/Folder.jpg` <br>
 For example, `1971-Budgie/1971-Budgie.jpg` -> `1971-Budgie/Folder.jpg`
 
-    find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
+    find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -I_ mv _/_.jpg _/Folder.jpg
+
 
 ## make
 ```
@@ -252,3 +261,16 @@ Like cat but for zipped files
 ## if
 use `[[` for compound conditionals
 
+## date
+Print date as YYYY-MM-DD hh:mm:ss
+
+    date +"%F %T"
+
+Equivalent to
+
+    date +"%Y-%m-%d %H:%M:%S"
+
+## xargs
+Move all files in all subdirectories to current directory
+
+    ls */* | xargs -I_ mv _ .

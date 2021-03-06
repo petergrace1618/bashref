@@ -13,7 +13,6 @@ fi
 # Check to see that $FILENAME exists
 #
 FILENAME=$BASHREF
-#BACKUP=${BASHREF}.bak
 if [ ! -e $FILENAME ]; then
 	echo `basename $0`": error: Cannot find $FILENAME"
 	exit 1
@@ -52,13 +51,13 @@ fi
 #
 NEW_ENTRY="$TMP/new.entry"
 echo "$HEADING"
-echo "(^D to end, ^C to cancel):"
+echo "(^D to save, ^C to cancel):"
 cat > $NEW_ENTRY
 
 #
-# Create backup copy of $FILENAME
-# Project is on github, so backup no longer needed
-#cp "$FILENAME" "$BACKUP"
+# Add date added to facilitate manual update of bashref.md
+#
+echo ^^^ Added `date +"%F %T"` >> $NEW_ENTRY
 
 #
 # If keyword is not found then add new section at end

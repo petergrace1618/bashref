@@ -215,9 +215,24 @@ zcat
 	-like cat for zipped files
 
 ## export
+more shit
+^^^ Added 2021-03-06 01:38:18
+fuck shit
+^^^ Added 2021-03-06 01:36:24
 export -n variable
 		causes the variable to be removed from export list
 
 ## if
 use [[ for compound conditionals
+
+## fuck
+shit
+^^^ Added 2021-03-06 01:38:04
+
+## date
+Print date as YYYY-MM-DD hh:mm:ss
+    date +"%F %T"
+Equivalent to 
+    date +"%Y-%m-%d %H:%M:%S"
+^^^ Added 2021-03-06 01:44:33
 

@@ -96,6 +96,9 @@ tr -d '<char>'
 -q:	quiet mode. display only if files differ
 
 ## ls
+List hidden files and directories. Doesn't match . .. ..*
+    ls .[^.]* -d
+^^^ Added 2021-03-06 03:46:05
 -1
 	-single column output
 -p
@@ -144,8 +147,11 @@ sed -n
 -r,-R 	remove directories and their contents recursively
 
 ## find
+List directories other than hidden directories
+    find . -maxdepth 1 -type d -name '[^.]*' -printf '%f\n'
+^^^ Added 2021-03-06 04:12:11
 find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
-find . -maxdepth 1 -type d
+find . -maxdepth 1 -type d -printf '%f\n'
     list directories only
 find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
 CONVERTS:

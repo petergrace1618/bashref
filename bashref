@@ -96,9 +96,8 @@ tr -d '<char>'
 -q:	quiet mode. display only if files differ
 
 ## ls
-List hidden files and directories. Doesn't match . .. ..*
+List hidden files and directories. Doesn't match `.`, `..`, or `..*`
     ls .[^.]* -d
-^^^ Added 2021-03-06 03:46:05
 -1
 	-single column output
 -p
@@ -149,15 +148,15 @@ sed -n
 ## find
 List directories other than hidden directories
     find . -maxdepth 1 -type d -name '[^.]*' -printf '%f\n'
-^^^ Added 2021-03-06 04:12:11
-find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
-find . -maxdepth 1 -type d -printf '%f\n'
-    list directories only
-find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -i'{}' mv '{}'/'{}'.jpg '{}'/Folder.jpg
+Add .bak extension to files
+    find . -name "H VII*.wav" -print0 | xargs -0 -i cp '{}' '{}'.bak
+list directories only
+    find . -maxdepth 1 -type d -printf '%f\n'
 CONVERTS:
 1971-Budgie/1971-Budgie.jpg
 INTO: 
 1971-Budgie/Folder.jpg
+    find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -I_ mv _/_.jpg _/Folder.jpg
 
 ## make
 TARGET: PREREQUISITES
@@ -232,10 +231,8 @@ Print date as YYYY-MM-DD hh:mm:ss
     date +"%F %T"
 Equivalent to 
     date +"%Y-%m-%d %H:%M:%S"
-^^^ Added 2021-03-06 01:44:33
 
 ## xargs
 Move all files in all subdirectories to current directory
     ls */* | xargs -I_ mv _ .
-^^^ Added 2021-03-06 02:11:43
 

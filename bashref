@@ -163,6 +163,9 @@ TARGET: PREREQUISITES
 	RECIPE
 
 ## git
+Display 160-bit hash for given TEXT
+    echo TEXT | git hash-object --stdin
+^^^ Added 2021-03-07 22:01:59
 --author=<pattern>
     Show only commits from author matching pattern
 git branch -f <branch> <starting-point>

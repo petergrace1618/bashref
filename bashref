@@ -54,6 +54,8 @@ p 	Go to previous node
 ? 	Lists a summary of commands
 
 ## echo
+|-e|Escape chars must be inside double quotes and -e option must precede text with escape chars|
+^^^ Added 2021-03-07 22:34:02
 echo -e "\033c"
 	clears the screen
 -e

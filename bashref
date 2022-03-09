@@ -1,6 +1,9 @@
 # BASH REFERENCE
 
 ## vi
+Go to Nth character in file
+:normal! 0go<N> "
+^^^ Added 2021-05-28 04:42:10
 dG, yG, cG
     delete, yank, and change to end of file  
 dgg, ygg, cgg 
@@ -165,6 +168,17 @@ TARGET: PREREQUISITES
 	RECIPE
 
 ## git
+git -C . rev-parse &>/dev/null; echo $? #0: git repo, 128: not git repo
+^^^ Added 2022-03-05 15:06:24
+git config -l [--show-origin]
+	list all config variables, and optionally what file they're defined in
+^^^ Added 2022-03-05 13:34:10
+git remote set-url origin <new-url>
+when a repo is renamed, this set the local repo to point to the new repo
+^^^ Added 2021-05-27 02:20:49
+git config --global help.format html
+	-make git open help files in browser by default
+^^^ Added 2021-04-19 19:22:28
 Display 160-bit hash for given TEXT
     echo TEXT | git hash-object --stdin
 ^^^ Added 2021-03-07 22:01:59
@@ -214,6 +228,9 @@ git commit -m "MESSAGE"
 git push (<remote>|origin) master
 
 ## set
+set -o posix; set; set +o posix
+	print shell variables only--no functions
+^^^ Added 2021-05-15 19:48:32
 unset
 	-unset environment variable
 set [args1...] -- [args2...]
@@ -240,4 +257,18 @@ Equivalent to
 ## xargs
 Move all files in all subdirectories to current directory
     ls */* | xargs -I_ mv _ .
+
+## free
+gets data from /proc/meminfo
+^^^ Added 2021-05-06 06:54:54
+-m
+	display amount in MB
+^^^ Added 2021-05-06 06:53:35
+displays free memory
+^^^ Added 2021-05-06 06:49:45
+
+## bash
+&>/dev/null
+	redirect stdin & stdout to /dev/null. i.e. suppress all output
+^^^ Added 2022-03-05 13:20:19
 

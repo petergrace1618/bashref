@@ -268,6 +268,11 @@ displays free memory
 ^^^ Added 2021-05-06 06:49:45
 
 ## bash
+- Change home directory in Git Bash
+Add the following to /c/Users/peter/.bashrc :
+    export HOME=/c/cygwin64/home/GraxonTheImbiber
+	cd $HOME
+^^^ Added 2024-08-06 00:46:38
 &>/dev/null
 	redirect stdin & stdout to /dev/null. i.e. suppress all output
 ^^^ Added 2022-03-05 13:20:19

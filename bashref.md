@@ -1,41 +1,41 @@
 # BASH REFERENCE
 
-## vi
-| Command | Use |
-| - | - |
-| :normal! 0go\<N\> " | Go to Nth character in file |
-| dG, yG, cG | delete, yank, and change to end of file |
-| dgg, ygg, cgg | delete, yank, and change to beginning of file |
-| :argd file | delete file from argument list |
-| :arge[dit] file | add file to the argument list and edits it |
-| :args file1 file2 ... | load the given list of files for editing |
-| :e! | reload the original file |
-| :options | open window showing all vim options |
-| :hid[e] | close the current window |
-| ^W^W | switch to next window |
-| /\<up-arrow\> :\<up-arrow\> | allows you to recall previous searches and commands |
-| * | search for (and highlights) the word under the cursor |
-| :%s///c | substitute on all lines (%) with confirmation (c) |
-| :w | Save current file. |
-| :w \<file\> | Save a copy of current file with name \<file\>. (Doesn't change name of current file) |
-| :saveas \<file\> | Save current file as \<file\> |
-| :edit \<file\> | Open new file to edit |
-| :next | Go to next in list of files (entered on command line) |
-| :prev | Go to previous ... |
-| \<Ctrl-6\> | Switch between current/prev file |
-| D | Delete from cursor to end of line |
+## bash
+To change home directory in Git Bash, add the following to /c/Users/peter/.bashrc :
 
-## info
-| Key | Use |
-| --- | --- |
-| t   | go to top node (menu page) |
-| b   | beginning of node (top of page) |
-| n   | Go to next node |
-| p   | Go to previous node |
-| ^x o | Move to next window |
-| ^X 0 | Delete current window |
-| ^X 1 | Delete all windows except current window |
-| ?    | Lists a summary of commands |
+    export HOME=/c/cygwin64/home/GraxonTheImbiber
+	cd $HOME
+
+Redirect stdin & stdout to /dev/null. i.e. suppress all output
+
+    &>/dev/null
+	
+## cat
+| Option | Use |
+| - | - |
+| -e | shows control chars (e.g. ^M) and $ at EOL |
+| -A | like -e but shows tabs as ^I |
+
+## cp
+| Option | Use |
+| - | - |
+| -s | create symbolic link instead of copying file |
+
+## date
+Print date as YYYY-MM-DD hh:mm:ss
+
+    date +"%F %T"
+
+Equivalent to
+
+    date +"%Y-%m-%d %H:%M:%S"
+
+## diff
+| Option | Use |
+| - | - |
+| -s | report when files are the same |
+| -y | two column output |
+| -q | quiet mode. display only if files differ |
 
 ## echo
 | Option | Use |
@@ -45,104 +45,15 @@
 | -e "\033c" | clears the screen |
 | -n | suppress trailing newline |
 
-## grep
+## env
+Set each NAME to VALUE in the environment and run COMMAND.
+
+    env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]...]
+
+## export
 | Option | Use |
 | - | - |
-| -e | match regexp |
-| -i | ignore case |
-| -n | print line number of matching lines |
-| -v | invert pattern, i.e. show non-matching lines |
-| -c | print count of matching lines |
-| -q | quiet mode. supresses normal output |
-
-## less
-| Key command | Use |
-| - | - |
-| -,-- | set command line options from inside less |
-| :e, E | open new file for examining |
-| :n, :p, :x | view next, previous, first file in list |
-| :d | remove current file from list of files |
-
-## tr
-Convert multiple occurrences of characters in \<charlist\> to single occurrences
-
-    tr -s '<charlist>'
-
-Delete all occurences of \<char\> from input
-
-    tr -d '<char>'
-
-## cat
-| Option | Use |
-| - | - |
-| -e | shows control chars (e.g. ^M) and $ at EOL |
-| -A | like -e but shows tabs as ^I |
-
-## diff
-| Option | Use |
-| - | - |
-| -s | report when files are the same |
-| -y | two column output |
-| -q | quiet mode. display only if files differ |
-
-## ls
-| Option | Use |
-| - | - |
-| -1 | -single column output |
-| -p | -adds only / after directories |
-| --indicator-style=none | -no indicator after filename |
-| -d | list directory entries instead of contents, likewise with symbolic links |
-| -p | add terminal backslash to directory listings |
-| -Q | enclose entries in double quotes |
-| -H | When a symbolic link points to a directory, follow the link |
-| -L | dereference symbolic links. Shows info about file it points to, not about link itself |
-
-List hidden files and directories. Doesn't match `.`, `..`, or `..*`
-
-    ls .[^.]* -d
-
-## stat.h
-`sys/stat.h` located in /usr/include/sys
-
-## ln
-    ln -s TARGET LINKNAME
-
-## sed
-| Option | Use |
-| - | - |
-| -s | consider files separate instead of one continuous stream |
-| -i | modify files in place |
-| -f FILE | specifies a script file |
-| -n | suppress automatic printing of pattern space |
-
-## uniq
-| Option | Use |
-| - | - |
-| -d | only print duplicate lines |
-
-## cp
-| Option | Use |
-| - | - |
-| -s | create symbolic link instead of copying file |
-
-## wc
-| Option | Use |
-| - | - |
-| -L | print length of longest line |
-
-## sort
-| Option | Use |
-| - | - |
-|-o FILE | send output to file instead of stdout |
-| -d | sort in dictionary order. only consider alphanumerics and blanks |
-| -r | reverse order sort |
-| -c | check for sorted input. do not sort |
-| -u | like uniq. collapse repeated lines |
-
-## rm
-| Option | Use |
-| - | - |
-| -r,-R | remove directories and their contents recursively |
+| -n variable | remove variable from export list |
 
 ## find
 List directories other than hidden directories
@@ -162,12 +73,12 @@ For example, `1971-Budgie/1971-Budgie.jpg` -> `1971-Budgie/Folder.jpg`
 
     find . -mindepth 1 -type d -printf '%f\0' | xargs -0 -I_ mv _/_.jpg _/Folder.jpg
 
+## free
+Displays free memory. Gets data from /proc/meminfo
 
-## make
-```
-TARGET: PREREQUISITES
-	RECIPE
-```
+| Option | Use |
+| - | - |
+| -m | display amount in MB |
 
 ## git
 Display 0 if git repo, 128 if not
@@ -261,6 +172,82 @@ to update, commit, and push a project
     git commit -m "MESSAGE"
     git push (<remote>|origin) master
 
+## grep
+| Option | Use |
+| - | - |
+| -e | match regexp |
+| -i | ignore case |
+| -n | print line number of matching lines |
+| -v | invert pattern, i.e. show non-matching lines |
+| -c | print count of matching lines |
+| -q | quiet mode. supresses normal output |
+
+## if
+use `[[` for compound conditionals
+
+## info
+| Key | Use |
+| --- | --- |
+| t   | go to top node (menu page) |
+| b   | beginning of node (top of page) |
+| n   | Go to next node |
+| p   | Go to previous node |
+| ^x o | Move to next window |
+| ^X 0 | Delete current window |
+| ^X 1 | Delete all windows except current window |
+| ?    | Lists a summary of commands |
+
+## less
+| Key command | Use |
+| - | - |
+| -,-- | set command line options from inside less |
+| :e, E | open new file for examining |
+| :n, :p, :x | view next, previous, first file in list |
+| :d | remove current file from list of files |
+
+## ln
+    ln -s TARGET LINKNAME
+
+## ls
+| Option | Use |
+| - | - |
+| -1 | -single column output |
+| -p | -adds only / after directories |
+| --indicator-style=none | -no indicator after filename |
+| -d | list directory entries instead of contents, likewise with symbolic links |
+| -p | add terminal backslash to directory listings |
+| -Q | enclose entries in double quotes |
+| -H | When a symbolic link points to a directory, follow the link |
+| -L | dereference symbolic links. Shows info about file it points to, not about link itself |
+
+List hidden files and directories. Doesn't match `.`, `..`, or `..*`
+
+    ls .[^.]* -d
+
+## make
+```
+TARGET: PREREQUISITES
+	RECIPE
+```
+
+## python
+| Option | Use |
+| - | - |
+| -i | Inspect interactively after running script. Forces a prompt even if stdin does not appear to be a terminal; also PYTHONINSPECT=x |
+
+## rm
+| Option | Use |
+| - | - |
+| -r,-R | remove directories and their contents recursively |
+
+## sed
+| Option | Use |
+| - | - |
+| -s | consider files separate instead of one continuous stream |
+| -i | modify files in place |
+| -f FILE | specifies a script file |
+| -n | suppress automatic printing of pattern space |
+
 ## set
 Show lines in output of set command that match <regexp>
 
@@ -279,48 +266,18 @@ begin with `-`. Prevents any of args2 to be taken as an option.
 
     set [args1...] -- [args2...]
 
-## zcat
-Like cat but for zipped files
-
-## export
+## sort
 | Option | Use |
 | - | - |
-| -n variable | remove variable from export list |
+|-o FILE | send output to file instead of stdout |
+| -d | sort in dictionary order. only consider alphanumerics and blanks |
+| -r | reverse order sort |
+| -c | check for sorted input. do not sort |
+| -u | like uniq. collapse repeated lines |
 
-## if
-use `[[` for compound conditionals
+## stat.h
+`sys/stat.h` located in /usr/include/sys
 
-## date
-Print date as YYYY-MM-DD hh:mm:ss
-
-    date +"%F %T"
-
-Equivalent to
-
-    date +"%Y-%m-%d %H:%M:%S"
-
-## xargs
-Move all files in all subdirectories to current directory
-
-    ls */* | xargs -I_ mv _ .
-
-## free
-Displays free memory. Gets data from /proc/meminfo
-
-| Option | Use |
-| - | - |
-| -m | display amount in MB |
-
-## bash
-To change home directory in Git Bash, add the following to /c/Users/peter/.bashrc :
-
-    export HOME=/c/cygwin64/home/GraxonTheImbiber
-	cd $HOME
-
-Redirect stdin & stdout to /dev/null. i.e. suppress all output
-
-    &>/dev/null
-	
 ## tar
 Create archive.tar from files foo and bar.
 
@@ -334,14 +291,55 @@ Extract all files from archive.tar.
 
     tar -xf archive.tar
 
-## python
+## tr
+Convert multiple occurrences of characters in \<charlist\> to single occurrences
+
+    tr -s '<charlist>'
+
+Delete all occurences of \<char\> from input
+
+    tr -d '<char>'
+
+## uniq
 | Option | Use |
 | - | - |
-| -i | Inspect interactively after running script. Forces a prompt even if stdin does not appear to be a terminal; also PYTHONINSPECT=x |
+| -d | only print duplicate lines |
 
-## env
-Set each NAME to VALUE in the environment and run COMMAND.
+## vi
+| Command | Use |
+| - | - |
+| :normal! 0go\<N\> " | Go to Nth character in file |
+| dG, yG, cG | delete, yank, and change to end of file |
+| dgg, ygg, cgg | delete, yank, and change to beginning of file |
+| :argd file | delete file from argument list |
+| :arge[dit] file | add file to the argument list and edits it |
+| :args file1 file2 ... | load the given list of files for editing |
+| :e! | reload the original file |
+| :options | open window showing all vim options |
+| :hid[e] | close the current window |
+| ^W^W | switch to next window |
+| /\<up-arrow\> :\<up-arrow\> | allows you to recall previous searches and commands |
+| * | search for (and highlights) the word under the cursor |
+| :%s///c | substitute on all lines (%) with confirmation (c) |
+| :w | Save current file. |
+| :w \<file\> | Save a copy of current file with name \<file\>. (Doesn't change name of current file) |
+| :saveas \<file\> | Save current file as \<file\> |
+| :edit \<file\> | Open new file to edit |
+| :next | Go to next in list of files (entered on command line) |
+| :prev | Go to previous ... |
+| \<Ctrl-6\> | Switch between current/prev file |
+| D | Delete from cursor to end of line |
 
-    env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]...]
+## wc
+| Option | Use |
+| - | - |
+| -L | print length of longest line |
 
+## xargs
+Move all files in all subdirectories to current directory
+
+    ls */* | xargs -I_ mv _ .
+
+## zcat
+Like cat but for zipped files
 

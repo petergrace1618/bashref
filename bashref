@@ -170,8 +170,8 @@ TARGET: PREREQUISITES
 ## git
 git -C . rev-parse &>/dev/null; echo $? #0: git repo, 128: not git repo
 ^^^ Added 2022-03-05 15:06:24
-git config -l [--show-origin]
-	list all config variables, and optionally what file they're defined in
+git config -l --show-origin --show-origin
+	list all config variables with scope and origin
 ^^^ Added 2022-03-05 13:34:10
 git remote set-url origin <new-url>
 when a repo is renamed, this set the local repo to point to the new repo

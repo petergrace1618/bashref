@@ -3,6 +3,7 @@
 ## vi
 | Command | Use |
 | - | - |
+| :normal! 0go\<N\> " | Go to Nth character in file |
 | dG, yG, cG | delete, yank, and change to end of file |
 | dgg, ygg, cgg | delete, yank, and change to beginning of file |
 | :argd file | delete file from argument list |
@@ -40,6 +41,7 @@
 | Option | Use |
 | - | - |
 | -e | enable interpretation of backslash escape characters |
+| -e | Escape chars must be inside double quotes and -e option must precede text with escape chars |
 | -e "\033c" | clears the screen |
 | -n | suppress trailing newline |
 
@@ -168,6 +170,26 @@ TARGET: PREREQUISITES
 ```
 
 ## git
+Display 0 if git repo, 128 if not
+
+    git -C . rev-parse &>/dev/null; echo $?
+
+List all config variables with scope and origin
+
+    git config -l --show-origin --show-origin
+
+When a repo is renamed, this set the local repo to point to the new repo
+
+    git remote set-url origin <new-url>
+
+Make git open help files in browser by default
+
+    git config --global help.format html
+
+Display 160-bit hash for given TEXT
+
+    echo TEXT | git hash-object --stdin
+
 Show only commits from author matching pattern
 
     git log --author=<pattern>
@@ -213,16 +235,15 @@ to optionally delete gh-pages
 
     git branch -D gh-pages
 
-to add new repository to github (first create new repo on github)
+To add existing local repository to github (first create new repo on github)
 
-    mkdir PROJECTDIR
-    cp PROJECTFILES PROJECTDIR
     cd PROJECTDIR
     git init
+    git pull REMOTE-URL master
     git add .
-    git commit -m ...
-    git remote add {REPONAME|NICKNAME} https://gitgub.com/USERNAME/REPONAME
-    git push {REPONAME|NICKNAME} master
+    git commit -m MESSAGE
+    git remote add REPO-NAME REMOTE-URL
+    git push --set-upstream REPO-NAME master
 
 to create a github pages branch (first rename main page to index.html)
 
@@ -241,9 +262,17 @@ to update, commit, and push a project
     git push (<remote>|origin) master
 
 ## set
+Show lines in output of set command that match <regexp>
+
+    grep -i <regexp> <<< `set`
+
+Print shell variables only--no functions
+
+    set -o posix; set; set +o posix
+
 unset environment variable
 
-    unset
+    unset VAR
 
 Any args after `--` are interpreted literally, even if they 
 begin with `-`. Prevents any of args2 to be taken as an option.
@@ -274,3 +303,45 @@ Equivalent to
 Move all files in all subdirectories to current directory
 
     ls */* | xargs -I_ mv _ .
+
+## free
+Displays free memory. Gets data from /proc/meminfo
+
+| Option | Use |
+| - | - |
+| -m | display amount in MB |
+
+## bash
+To change home directory in Git Bash, add the following to /c/Users/peter/.bashrc :
+
+    export HOME=/c/cygwin64/home/GraxonTheImbiber
+	cd $HOME
+
+Redirect stdin & stdout to /dev/null. i.e. suppress all output
+
+    &>/dev/null
+	
+## tar
+Create archive.tar from files foo and bar.
+
+    tar -cf archive.tar foo bar
+
+List all files in archive.tar verbosely.
+
+    tar -tvf archive.tar
+
+Extract all files from archive.tar.
+
+    tar -xf archive.tar
+
+## python
+| Option | Use |
+| - | - |
+| -i | Inspect interactively after running script. Forces a prompt even if stdin does not appear to be a terminal; also PYTHONINSPECT=x |
+
+## env
+Set each NAME to VALUE in the environment and run COMMAND.
+
+    env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]...]
+
+

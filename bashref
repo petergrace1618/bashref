@@ -3,7 +3,6 @@
 ## vi
 Go to Nth character in file
 :normal! 0go<N> "
-^^^ Added 2021-05-28 04:42:10
 dG, yG, cG
     delete, yank, and change to end of file  
 dgg, ygg, cgg 
@@ -58,7 +57,6 @@ p 	Go to previous node
 
 ## echo
 |-e|Escape chars must be inside double quotes and -e option must precede text with escape chars|
-^^^ Added 2021-03-07 22:34:02
 echo -e "\033c"
 	clears the screen
 -e
@@ -169,19 +167,14 @@ TARGET: PREREQUISITES
 
 ## git
 git -C . rev-parse &>/dev/null; echo $? #0: git repo, 128: not git repo
-^^^ Added 2022-03-05 15:06:24
 git config -l --show-origin --show-origin
 	list all config variables with scope and origin
-^^^ Added 2022-03-05 13:34:10
 git remote set-url origin <new-url>
 when a repo is renamed, this set the local repo to point to the new repo
-^^^ Added 2021-05-27 02:20:49
 git config --global help.format html
 	-make git open help files in browser by default
-^^^ Added 2021-04-19 19:22:28
 Display 160-bit hash for given TEXT
     echo TEXT | git hash-object --stdin
-^^^ Added 2021-03-07 22:01:59
 --author=<pattern>
     Show only commits from author matching pattern
 git branch -f <branch> <starting-point>
@@ -229,10 +222,8 @@ git push (<remote>|origin) master
 ## set
 grep -i <regexp> <<< `set`
 	Show lines in output of set command that match <regexp>
-^^^ Added 2024-09-29 23:26:12
 set -o posix; set; set +o posix
 	print shell variables only--no functions
-^^^ Added 2021-05-15 19:48:32
 unset
 	-unset environment variable
 set [args1...] -- [args2...]
@@ -262,37 +253,29 @@ Move all files in all subdirectories to current directory
 
 ## free
 gets data from /proc/meminfo
-^^^ Added 2021-05-06 06:54:54
 -m
 	display amount in MB
-^^^ Added 2021-05-06 06:53:35
 displays free memory
-^^^ Added 2021-05-06 06:49:45
 
 ## bash
 - Change home directory in Git Bash
 Add the following to /c/Users/peter/.bashrc :
     export HOME=/c/cygwin64/home/GraxonTheImbiber
 	cd $HOME
-^^^ Added 2024-08-06 00:46:38
 &>/dev/null
 	redirect stdin & stdout to /dev/null. i.e. suppress all output
-^^^ Added 2022-03-05 13:20:19
 
 ## tar
 tar -cf archive.tar foo bar  # Create archive.tar from files foo and bar.
 tar -tvf archive.tar         # List all files in archive.tar verbosely.
 tar -xf archive.tar          # Extract all files from archive.tar.
-^^^ Added 2024-09-27 21:27:24
 
 ## python
 -i     : inspect interactively after running script; forces a prompt even
          if stdin does not appear to be a terminal; also PYTHONINSPECT=x
 
-^^^ Added 2024-09-29 16:27:29
 
 ## env
 Usage: env [OPTION]... [-] [NAME=VALUE]... [COMMAND [ARG]...]
 Set each NAME to VALUE in the environment and run COMMAND.
-^^^ Added 2024-09-29 16:50:51
 
